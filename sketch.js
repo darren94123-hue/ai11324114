@@ -12,7 +12,7 @@ This example uses p5 preload function to create the classifier
 // Classifier Variable
 let classifier;
 // Model URL
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bXy2kDNi/';
+let imageModelURL = 'https://darren94123-hue.github.io/ai11324114/';
 
 // Video
 let video;
@@ -21,20 +21,50 @@ let flippedVideo;
 let label = "";
 
 // Load the model first
-function preload() {
-  classifier = ml5.imageClassifier(imageModelURL + 'model.json');
-}
-
 function setup() {
-  createCanvas(320, 260);
+
+  createCanvas(320, 320);
+
+  
+
   // Create the video
-  video = createCapture(VIDEO);
-  video.size(320, 240);
+
+    var constraints = {
+
+    audio: false,
+
+    video: {
+
+      facingMode: {
+
+        exact: "environment"
+
+      }
+
+    }   
+
+    //video: {
+
+      //facingMode: "user"
+
+    //}
+
+  };
+
+  video = createCapture(constraints);
+
+  video.size(320, 320);
+
   video.hide();
 
+
+
   flippedVideo = ml5.flipImage(video)
+
   // Start classifying
+
   classifyVideo();
+
 }
 
 function draw() {
